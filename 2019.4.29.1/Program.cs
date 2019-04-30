@@ -11,9 +11,10 @@ namespace _2019._4._29._1
 		static void Main(string[] args)
 		{
 			//14课变量作业随机产生1-1000数值，10次内猜到它！
-			
-			int random = new Random().Next(1000);
-			Console.WriteLine("系统会生成一个1-1000的数值让我们在10次内猜到它吧！");
+
+			int max = 1000;
+			int random = new Random().Next(max);
+			Console.WriteLine($"系统会生成一个不大于{max}的数值让我们在10次内猜到它吧！");
 			for (int i = 0; i < 10; i++)
 			{
 				int import = Convert.ToInt32(Console.ReadLine());
@@ -32,7 +33,7 @@ namespace _2019._4._29._1
 				else
 				{
 					Console.WriteLine($"第{i + 1}次回答，答对了");
-
+					break;
 				}
 
 
