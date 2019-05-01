@@ -18,29 +18,36 @@ namespace _2019._4._29._1
 			Console.WriteLine("请输入要查找的数；");
 			int input = Convert.ToInt32(Console.ReadLine());
 
-			//初始数组位数
-			int length = array.Length -14;
+			//max标，min标，初始标
+			int max = array.Length - 1;
+			int min = 0;
+			int initial = 0;
+			int shift = 0;
 
 			for (int i = 0; i < array.Length; i++)
 			{
-				int interval = (length + 1) / 2-(i/2);
-
-
-				if (input == array[length])
+				if (input == array[initial])
 				{
-					Console.WriteLine($"第{i + 1}次查找，数组第{length + 1}位，数值为{array[length]}数据匹配，查找完成！");
+					Console.WriteLine($"第{i + 1}次查找，查找数值为{array[initial]}数据匹配查找完成");
 					break;
 				}
 				else
 				{
-					Console.WriteLine($"第{i + 1}次查找，数组第{length + 1}位，数值为{array[length]}");
-					if (input < array[length])
+					if (input > array[initial])
 					{
-						length -= interval;
+						Console.WriteLine($"第{i + 1}次查找，查找数值为{array[initial]}下标为[{initial}]");
+						min = initial;
+						shift = (max - min) / 2;
+						initial += shift;
+						Console.WriteLine($"下一次查找将向右移动{shift}位\n");
 					}
 					else
 					{
-						length += interval;
+						Console.WriteLine($"第{i + 1}次查找，查找数值为{array[initial]}下标为[{initial}]");
+						max = initial;
+						shift = (max - min) / 2;
+						initial -= shift;
+						Console.WriteLine($"下一次查找将向左移动{shift}位\n");
 					}
 				}
 			}
