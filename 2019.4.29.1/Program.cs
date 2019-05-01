@@ -19,21 +19,21 @@ namespace _2019._4._29._1
 			int input = Convert.ToInt32(Console.ReadLine());
 
 			//初始数组位数
-			int length = array.Length - 1;
+			int length = array.Length -14;
 
 			for (int i = 0; i < array.Length; i++)
 			{
-				int interval = (length + 1) / 2;
+				int interval = (length + 1) / 2-(i/2);
 
 
 				if (input == array[length])
 				{
-					Console.WriteLine($"第{i}次查找，数组第{length + 1}位，数值为{array[length]}数据匹配，查找完成！");
+					Console.WriteLine($"第{i + 1}次查找，数组第{length + 1}位，数值为{array[length]}数据匹配，查找完成！");
 					break;
 				}
 				else
 				{
-					Console.WriteLine($"第{i}次查找，数组第{length + 1}位，数值为{array[length]}");
+					Console.WriteLine($"第{i + 1}次查找，数组第{length + 1}位，数值为{array[length]}");
 					if (input < array[length])
 					{
 						length -= interval;
