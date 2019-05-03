@@ -23,22 +23,21 @@ namespace _2019._4._29._1
 			int min = 0;
 			int initial = 0;
 			int shift = 0;
-			int i = 0;
-			int j = 1;
-
-			while(i < 8)
+			int i = 1;
+			int k = 1;
+			while(k < 2)
 			{
 				i++;
-				j++;
 				while (input == array[initial])
 					{
-						Console.WriteLine($"第{j}次查找，查找数值为{array[initial]}数据匹配查找完成");
+						Console.WriteLine($"第{i}次查找，查找数值为{array[initial]}数据匹配查找完成");
 						i = 8;
+						k++;
 						break;
 					}
 				while(input > array[initial])
 					{
-						Console.WriteLine($"第{j}次查找，查找数值为{array[initial]}下标为[{initial}]");
+						Console.WriteLine($"第{i}次查找，查找数值为{array[initial]}下标为[{initial}]");
 						min = initial;
 						shift = (max - min) / 2;
 						initial += shift;
@@ -46,20 +45,20 @@ namespace _2019._4._29._1
 					}
 				while(input < array[initial])
 					{
-						Console.WriteLine($"第{j}次查找，查找数值为{array[initial]}下标为[{initial}]");
+						Console.WriteLine($"第{i}次查找，查找数值为{array[initial]}下标为[{initial}]");
 						max = initial;
 						shift = (max - min) / 2;
 						initial -= shift;
 						Console.WriteLine($"下一次查找将向左移动{shift}位\n");
 					}	
-			}
-			
-			while(i < 9 && i > 8)
-				{
+				while(i > 9)
+					{
 					i++;
 					Console.WriteLine($"输出错误，此数组没有{input}数值");
-				}
-
+					k++;
+					break;
+					}
+            }
 			Console.Read();
 		}
 	}
