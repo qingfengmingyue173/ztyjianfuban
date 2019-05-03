@@ -10,40 +10,57 @@ namespace _2019._4._29._1
 	{
 		static void Main(string[] args)
 		{
-			/*//method1
-			//int[] array  = new int [] { 1, 2, 3, 4, 5, 6, 7, 8, 9, };//recentlyPractise
-			//method2
-			//int[] array3 = { 1, 2, 3, };
-			//method3
-			int length = 10;
-			int[] array = new int[length];
-			array[0] = 5;
-			Console.Write(array[0] + "，");
+			//实现数组
+			Console.WriteLine("数组：1, 8, 13, 14, 25, 26, 37, 68, 99, 100, 110, 123, 136, 314, 415");
+			int[] array = new int[] { 1, 8, 13, 14, 25, 26, 37, 68, 99, 100, 110, 123, 136, 314, 415 };
 
-			for (int i = 1; i < length; i++)
+			//实现输入
+			Console.WriteLine("请输入要查找的数；");
+			int input = Convert.ToInt32(Console.ReadLine());
+
+			//max标，min标，初始标
+			int max = array.Length - 1;
+			int min = 0;
+			int initial = 0;
+			int shift = 0;
+			int i = 0;
+			int j = 1;
+
+			while(i < 8)
 			{
-				//Thread.Sleep(1);
-
-				array[i] = array[i - 1] + Console.Write(array[1] + " ,");
-				Console.Write(array[i] + "，");
-
-				//int random2 = new Random().Next(10);
-				//Console.WriteLine(new Random().Next(1,5));
-			}*/
-
-			int length = 10;//定义长度
-			int[] array = new int [length];//生成数组
-			array[0] = 5;//第一位数组
-			Console.Write(array[0] + ",");
-
-			for (int i = 1; i < length; i++)
-			{
-				int random = new Random().Next(10);//生成随机数
-				array[i] = array[i - 1] + random;//为什么必须要在前一个数上加，而不能自增呢？（自增会出现随机数相同）
-				Console.Write(array[i] + ",");
+				i++;
+				j++;
+				while (input == array[initial])
+					{
+						Console.WriteLine($"第{j}次查找，查找数值为{array[initial]}数据匹配查找完成");
+						i = 8;
+						break;
+					}
+				while(input > array[initial])
+					{
+						Console.WriteLine($"第{j}次查找，查找数值为{array[initial]}下标为[{initial}]");
+						min = initial;
+						shift = (max - min) / 2;
+						initial += shift;
+						Console.WriteLine($"下一次查找将向右移动{shift}位\n");
+					}
+				while(input < array[initial])
+					{
+						Console.WriteLine($"第{j}次查找，查找数值为{array[initial]}下标为[{initial}]");
+						max = initial;
+						shift = (max - min) / 2;
+						initial -= shift;
+						Console.WriteLine($"下一次查找将向左移动{shift}位\n");
+					}	
 			}
-			Console.Read();
+			
+			while(i < 9 && i > 8)
+				{
+					i++;
+					Console.WriteLine($"输出错误，此数组没有{input}数值");
+				}
 
+			Console.Read();
 		}
 	}
 }
